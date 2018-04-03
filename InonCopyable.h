@@ -11,16 +11,11 @@ public:
     /**
      * Constructors
      */
-    /**
-     *
-     */
     InonCopyable ()
     {
 
     }
-    /**
-     *
-     */
+    
     virtual ~InonCopyable ()
     {
 
@@ -29,15 +24,9 @@ private:
     /**
      * Constructors
      */
-    /**
-     *
-     */
     InonCopyable (const InonCopyable &obj) {}
     /**
      * Operations
-     */
-    /**
-     *
      */
     virtual InonCopyable operator= (const InonCopyable &obj) {}
 

@@ -23,9 +23,6 @@ public:
     /**
      * Operations
      */
-    /**
-     *
-     */
     void OnTaskProgress (std::string taskDescription, short percent)
     {
         if (percent <= 100 && percent >= 0)

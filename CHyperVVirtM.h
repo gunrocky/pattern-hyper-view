@@ -20,10 +20,6 @@ public:
     /**
      * Constructors
      */
-    /**
-     *
-     */
-    //
     CHyperVVirtM (CTaskEvent *ptaskEvent, const unsigned short cpuCounts, const unsigned long ramSize, const unsigned long hddSize, OSIds guestosId)
     {
         std::string taskDesc("HyperV virt machine creation");
@@ -60,7 +56,6 @@ public:
         ptaskEvent->OnTaskProgress(taskDesc, perc);
     }
     
-    
     CHyperVVirtM (CTaskEvent *ptaskEvent, CHyperVVirtM &hyperVirt)
     {
         std::string taskDesc("HyperV virt machine cloning");
@@ -71,15 +66,15 @@ public:
         perc += 20;
         ptaskEvent->OnTaskProgress(taskDesc, perc);
 
-        AVirtM::m_cpuCounts = hyperVirt.getCpuCounts();//cpuCounts;
+        AVirtM::m_cpuCounts = hyperVirt.getCpuCounts();
         perc += 20;
         ptaskEvent->OnTaskProgress(taskDesc, perc);
 
-        AVirtM::m_ramSize = hyperVirt.getRamSize();//ramSize;
+        AVirtM::m_ramSize = hyperVirt.getRamSize();
         perc += 20;
         ptaskEvent->OnTaskProgress(taskDesc, perc);
 
-        AVirtM::m_hddSize = hyperVirt.getHddSize();//hddSize;
+        AVirtM::m_hddSize = hyperVirt.getHddSize();
         perc += 20;
         ptaskEvent->OnTaskProgress(taskDesc, perc);
 
@@ -96,33 +91,24 @@ public:
         perc += 20;
         ptaskEvent->OnTaskProgress(taskDesc, perc);
     }
-    /**
-     * Operations
-     */
-    /**
-     *
-     */
+    
     ~CHyperVVirtM ()
     {
 
     }
     /**
-     *
+     * Operations
      */
     void Start ()
     {
         AVirtM::m_curState = VirtMState::RUN;
     }
-    /**
-     *
-     */
+    
     void Stop ()
     {
         AVirtM::m_curState = VirtMState::OFF;
     }
-    /**
-     *
-     */
+    
     std::unique_ptr<AVirtM> CloneVM (CTaskEvent *ptaskEvent)
     {
         return std::unique_ptr<AVirtM> (new CHyperVVirtM(ptaskEvent, *this));
@@ -130,9 +116,6 @@ public:
 private:
     /**
      * Constructors
-     */
-    /**
-     *
      */
     CHyperVVirtM ()
     {

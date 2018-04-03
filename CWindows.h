@@ -6,9 +6,6 @@
 #include "AGuestOS.h"
 
 /**
- * Namespace
- */
-/**
  * Class CWindows
  *
  */
@@ -19,33 +16,16 @@ class CWindows : public AGuestOS
      */
 public:
     /**
-     * Fields
-     */
-    /**
-     *
-     */
-    /**
      * Constructors
      */
-    /**
-     * Empty Constructor
-     */
     CWindows () { }
-    /**
-     *
-     */
+    
     ~CWindows ()
     {
 
     }
     /**
-     * Accessor Methods
-     */
-    /**
      * Operations
-     */
-    /**
-     *
      */
     void InstallApp (const std::string &appName)
     {
@@ -65,44 +45,6 @@ public:
     {
         std::cout << "Windows OS\n";
     }
-    /**
-     * Protected stuff
-     */
-protected:
-    /**
-     * Fields
-     */
-    /**
-     *
-     */
-    /**
-     * Constructors
-     */
-    /**
-     * Accessor Methods
-     */
-    /**
-     * Operations
-     */
-    /**
-     * Private stuff
-     */
-private:
-    /**
-     * Fields
-     */
-    /**
-     *
-     */
-    /**
-     * Constructors
-     */
-    /**
-     * Accessor Methods
-     */
-    /**
-     * Operations
-     */
 };
 #endif //CWINDOWS_H
 

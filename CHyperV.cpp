@@ -35,9 +35,7 @@ bool CHyperV::CreateVM(const unsigned short cpuCounts, const unsigned long ramSi
     m_vecVMs.push_back(std::unique_ptr<AVirtM> (new CHyperVVirtM(&this->m_taskEvent, cpuCounts, ramSize, hddSize, guestosId)));
     return true;
 }
-/**
- *
- */
+
 void CHyperV::RemoveVM (size_t indexVM)
 {
     std::cout << m_currentClass << " remove VM\n";
@@ -51,7 +49,6 @@ void CHyperV::RemoveVM (size_t indexVM)
     {
         std::cerr << "virtual machine must be shutdown\n";
         throw std::runtime_error("virtual machine must be shutdown");
-
     }
     unsigned short cpuCounts = AHypervisor::m_vecVMs.at(indexVM).get()->getCpuCounts();
     unsigned long ramSize = AHypervisor::m_vecVMs.at(indexVM).get()->getRamSize();
@@ -61,25 +58,17 @@ void CHyperV::RemoveVM (size_t indexVM)
     AHypervisor::m_availableRamSize += ramSize;
     AHypervisor::m_availableHddSize += hddSize;
 }
-/**
- *
- */
+
 size_t CHyperV::PrintListVM ()
 {
     std::cout << m_currentClass << " print list of VMs\n";
-    //std::vector<AVirtM>::iterator it;
     for (int i = 0; i < AHypervisor::m_vecVMs.size(); i++)
     {
-        //AGuestOS *guestos = NULL;
-        //guestos = it->GetOS();
         AHypervisor::m_vecVMs.at(i).get()->GetOS()->PrintInfo();
-        //guestos->PrintInfo();
     }
     return m_vecVMs.size();
 }
-/**
- *
- */
+
 AVirtM *CHyperV::GetVM (size_t indexVM)
 {
     std::cout << m_currentClass << " get VM\n";

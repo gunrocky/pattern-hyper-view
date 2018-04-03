@@ -16,22 +16,14 @@ public:
     /**
      * Constructors
      */
-    /**
-     * Empty Constructor
-     */
     CLinux () { }
-    /**
-     *
-     */
+    
     ~CLinux ()
     {
 
     }
     /**
      * Operations
-     */
-    /**
-     *
      */
     void InstallApp (const std::string &appName)
     {
@@ -52,17 +44,6 @@ public:
     {
         std::cout << "Linux OS\n";
     }
-    /**
-     * Protected stuff
-     */
-protected:
-    /**
-     * Private stuff
-     */
-private:
-    /**
-     * Operations
-     */
 };
 #endif //CLINUX_H
 

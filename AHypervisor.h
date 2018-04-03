@@ -40,9 +40,7 @@ public:
      * Constructors
      */
     AHypervisor () { }
-    /**
-     *
-     */
+    
     virtual ~AHypervisor ()
     {
 
@@ -50,30 +48,21 @@ public:
     /**
      * Accessor Methods
      */
-    /**
-     *
-     */
     HypervisorState getCurState ( )
     {
         return m_curState;
     }
-    /**
-     *
-     */
+    
     unsigned short getAvailableCpuCounts ( )
     {
         return m_availableCpuCounts;
     }
-    /**
-     *
-     */
+    
     unsigned long getAvailableRamSize ( )
     {
         return m_availableRamSize;
     }
-    /**
-     *
-     */
+    
     unsigned long getAvailableHddSize ( )
     {
         return m_availableHddSize;
@@ -81,21 +70,12 @@ public:
     /**
      * Operations
      */
-    /**
-     *
-     */
     virtual bool CreateVM (const unsigned short cpuCounts, const unsigned long ramSize, const unsigned long hddSize, OSIds guestosId) = 0;
-    /**
-     *
-     */
+    
     virtual void RemoveVM (size_t indexVM) = 0;
-    /**
-     *
-     */
+    
     virtual size_t PrintListVM () = 0;
-    /**
-     *
-     */
+    
     virtual AVirtM *GetVM (size_t indexVM) = 0;
     /**
      * Protected stuff

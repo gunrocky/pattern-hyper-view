@@ -34,9 +34,6 @@ public:
     /**
      * Constructors
      */
-    /**
-     *
-     */
     AVirtM(CTaskEvent *ptaskEvent, const unsigned short cpuCounts, const unsigned long ramSize, const unsigned long hddSize, OSIds guestosId);
     AVirtM() {}
     virtual ~AVirtM ()
@@ -45,9 +42,6 @@ public:
     }
     /**
      * Accessor Methods
-     */
-    /**
-     *
      */
     unsigned short getCpuCounts ( )
     {
@@ -58,9 +52,7 @@ public:
     {
         return m_ramSize;
     }
-    /**
-     *
-     */
+    
     unsigned long getHddSize ( )
     {
         return m_hddSize;
@@ -70,16 +62,12 @@ public:
     {
         return m_osid;
     }
-    /**
-     *
-     */
+    
     VirtMState getCurState ( )
     {
         return m_curState;
     }
-    /**
-     *
-     */
+    
     AVirtM (const AVirtM & virtm)
     {
         m_ramSize = virtm.m_ramSize;
@@ -97,7 +85,6 @@ public:
             break;
         }
     }
-
 
     virtual AVirtM &operator = (const AVirtM & virtm)
     {
@@ -123,21 +110,12 @@ public:
     /**
      * Operations
      */
-    /**
-     *
-     */
     virtual void Start () = 0;
-    /**
-     *
-     */
+    
     virtual void Stop () = 0;
-    /**
-     *
-     */
+    
     virtual std::unique_ptr<AVirtM> CloneVM (CTaskEvent *ptaskEvent) = 0;
-    /**
-     *
-     */
+    
     AGuestOS *GetOS ()
     {
         return m_guestos.get();
