@@ -20,6 +20,7 @@ public:
     CHyperV ()
     {
         m_currentClass.assign("CHyperV");
+        m_taskEvent.reset(new CTaskEvent);
     }
     
     ~CHyperV ()

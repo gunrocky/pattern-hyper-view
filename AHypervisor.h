@@ -88,7 +88,7 @@ protected:
     HypervisorState m_curState;
     unsigned long m_availableRamSize = 17179869184;  // 1024×1024×1024×16
     unsigned long m_availableHddSize = 107374182400; // 1024×1024×1024×100
-    CTaskEvent m_taskEvent;
+    std::unique_ptr<ITaskEvent> m_taskEvent;
     unsigned short m_availableCpuCounts = 8;
 };
 #endif //AHYPERVISOR_H

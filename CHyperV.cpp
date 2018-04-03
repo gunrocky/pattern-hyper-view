@@ -32,7 +32,7 @@ bool CHyperV::CreateVM(const unsigned short cpuCounts, const unsigned long ramSi
                   << AHypervisor::m_availableHddSize << "\n";
         return false;
     }
-    m_vecVMs.push_back(std::unique_ptr<AVirtM> (new CHyperVVirtM(&this->m_taskEvent, cpuCounts, ramSize, hddSize, guestosId)));
+    m_vecVMs.push_back(std::unique_ptr<AVirtM> (new CHyperVVirtM(m_taskEvent.get(), cpuCounts, ramSize, hddSize, guestosId)));
     return true;
 }
 

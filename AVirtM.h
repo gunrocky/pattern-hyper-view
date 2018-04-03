@@ -34,7 +34,7 @@ public:
     /**
      * Constructors
      */
-    AVirtM(CTaskEvent *ptaskEvent, const unsigned short cpuCounts, const unsigned long ramSize, const unsigned long hddSize, OSIds guestosId);
+    AVirtM(ITaskEvent *ptaskEvent, const unsigned short cpuCounts, const unsigned long ramSize, const unsigned long hddSize, OSIds guestosId);
     AVirtM() {}
     virtual ~AVirtM ()
     {
@@ -114,7 +114,7 @@ public:
     
     virtual void Stop () = 0;
     
-    virtual std::unique_ptr<AVirtM> CloneVM (CTaskEvent *ptaskEvent) = 0;
+    virtual std::unique_ptr<AVirtM> CloneVM (ITaskEvent *ptaskEvent) = 0;
     
     AGuestOS *GetOS ()
     {
