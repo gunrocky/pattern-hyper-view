@@ -10,6 +10,7 @@
 class ITaskEvent
 {
 public:
+    ~ITaskEvent() {}
     virtual void OnTaskProgress(const std::string &taskDescription, short percent) = 0;
 };
 
