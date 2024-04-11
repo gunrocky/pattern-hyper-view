@@ -12,14 +12,14 @@ int main()
     try
     {
         CHyperV hypervisor;
-        srand(time(NULL));
+        srand(static_cast<unsigned int>(time(NULL)));
 
         for (int i = 0; i < 10; i++)
         {
             int randomNum = rand() % 2;
-            unsigned short cpuCount = rand() % 2 + 1;
-            unsigned long ramSize = rand() % (1024 * 1024 * 1024) * 2;
-            unsigned long hddSize = rand() % (1024 * 1024 * 1024) * 13;
+            unsigned short cpuCount = static_cast<unsigned short>(rand()) % 2 + 1;
+            unsigned long ramSize = static_cast<unsigned long>(rand()) % (1024 * 1024 * 1024) * 2;
+            unsigned long hddSize = static_cast<unsigned long>(rand()) % (1024 * 1024 * 1024) * 13;
             if (randomNum)
             {
                 hypervisor.CreateVM(cpuCount, ramSize, hddSize, OSIds::WINDOWS);
@@ -34,7 +34,7 @@ int main()
         
         std::cout << "\n" << "quantity of virt machines = " << quantityVM << "\n";
         
-        size_t pos = rand() % quantityVM;
+        size_t pos = static_cast<size_t>(rand()) % quantityVM;
         std::cout << "\n" << "position for app installation = " << pos << "\n";
         AVirtM *ptr;
         
@@ -42,7 +42,7 @@ int main()
         
         ptr->GetOS()->InstallApp("super application");
         
-        pos = rand() % quantityVM;
+        pos = static_cast<size_t>(rand()) % quantityVM;
         std::cout << "\n" << "position for removing virt machine = " << pos << "\n";
         hypervisor.RemoveVM(pos);
         

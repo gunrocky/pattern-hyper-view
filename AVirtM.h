@@ -34,7 +34,9 @@ public:
     /**
      * Constructors
      */
-    AVirtM(ITaskEvent *ptaskEvent, const unsigned short cpuCounts, const unsigned long ramSize, const unsigned long hddSize, OSIds guestosId);
+    AVirtM(ITaskEvent *ptaskEvent, const unsigned short cpuCounts
+           , const unsigned long ramSize, const unsigned long hddSize
+           , OSIds guestosId);
     AVirtM() {}
     virtual ~AVirtM ()
     {
@@ -106,6 +108,7 @@ public:
             m_guestos.reset(new CWindows());
             break;
         }
+        return *this;
     }
     /**
      * Operations

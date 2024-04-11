@@ -11,7 +11,8 @@
 /**
  * Methods
  */
-bool CHyperV::CreateVM(const unsigned short cpuCounts, const unsigned long ramSize, const unsigned long hddSize, OSIds guestosId)
+bool CHyperV::CreateVM(const unsigned short cpuCounts, const unsigned long ramSize
+                       , const unsigned long hddSize, OSIds guestosId)
 {
     std::cout << m_currentClass << " create VM\n";
     if (AHypervisor::m_availableCpuCounts < cpuCounts)
@@ -32,7 +33,9 @@ bool CHyperV::CreateVM(const unsigned short cpuCounts, const unsigned long ramSi
                   << AHypervisor::m_availableHddSize << "\n";
         return false;
     }
-    m_vecVMs.push_back(std::unique_ptr<AVirtM> (new CHyperVVirtM(m_taskEvent.get(), cpuCounts, ramSize, hddSize, guestosId)));
+    m_vecVMs.push_back(std::unique_ptr<AVirtM> (
+        new CHyperVVirtM(m_taskEvent.get(), cpuCounts, ramSize
+                         , hddSize, guestosId)));
     return true;
 }
 
@@ -43,7 +46,8 @@ void CHyperV::RemoveVM (size_t indexVM)
     {
         std::cerr << "wrong input index. quantity of VMs = "
                   << AHypervisor::m_vecVMs.size() << "\n";
-        throw std::runtime_error("wrong input index. quantity of VMs = " + std::to_string(AHypervisor::m_vecVMs.size()));
+        throw std::runtime_error("wrong input index. quantity of VMs = "
+                                 + std::to_string(AHypervisor::m_vecVMs.size()));
     }
     if (m_vecVMs.at(indexVM).get()->getCurState() != VirtMState::OFF)
     {
@@ -53,7 +57,8 @@ void CHyperV::RemoveVM (size_t indexVM)
     unsigned short cpuCounts = AHypervisor::m_vecVMs.at(indexVM).get()->getCpuCounts();
     unsigned long ramSize = AHypervisor::m_vecVMs.at(indexVM).get()->getRamSize();
     unsigned long hddSize = AHypervisor::m_vecVMs.at(indexVM).get()->getHddSize();
-    AHypervisor::m_vecVMs.erase(AHypervisor::m_vecVMs.begin() + indexVM);
+    AHypervisor::m_vecVMs.erase(AHypervisor::m_vecVMs.begin()
+                                + static_cast<std::_Bit_const_iterator::difference_type>(indexVM));
     AHypervisor::m_availableCpuCounts += cpuCounts;
     AHypervisor::m_availableRamSize += ramSize;
     AHypervisor::m_availableHddSize += hddSize;
@@ -62,7 +67,7 @@ void CHyperV::RemoveVM (size_t indexVM)
 size_t CHyperV::PrintListVM ()
 {
     std::cout << m_currentClass << " print list of VMs\n";
-    for (int i = 0; i < AHypervisor::m_vecVMs.size(); i++)
+    for (size_t i = 0; i < AHypervisor::m_vecVMs.size(); i++)
     {
         AHypervisor::m_vecVMs.at(i).get()->GetOS()->PrintInfo();
     }
@@ -76,7 +81,8 @@ AVirtM *CHyperV::GetVM (size_t indexVM)
     {
         std::cerr << "wrong input index. quantity of VMs = "
                   << AHypervisor::m_vecVMs.size() << "\n";
-        throw std::runtime_error("wrong input index. quantity of VMs = " + std::to_string(AHypervisor::m_vecVMs.size()));
+        throw std::runtime_error("wrong input index. quantity of VMs = "
+                                 + std::to_string(AHypervisor::m_vecVMs.size()));
     }
 
     return AHypervisor::m_vecVMs.at(indexVM).get();
